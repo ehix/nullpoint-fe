@@ -1,20 +1,18 @@
-// import { Outlet, Link, useNavigate } from "react-router-dom"
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react'
 import { useRefreshMutation } from "./authApiSlice"
 import usePersist from "../../hooks/usePersist"
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from "./authSlice"
 import PulseLoader from 'react-spinners/PulseLoader'
-import Login from '../../features/auth/Login';
 
 const PersistLogin = () => {
 
     const [persist] = usePersist()
     const token = useSelector(selectCurrentToken)
     const effectRan = useRef(false)
+
     const [trueSuccess, setTrueSuccess] = useState(false)
-    // const navigate = useNavigate()
 
     const [refresh, {
         isUninitialized,
@@ -50,14 +48,6 @@ const PersistLogin = () => {
         // eslint-disable-next-line
     }, [])
 
-    // useEffect(() => {
-    //     if (isError && (!token || !persist)) {
-    //         const timeoutId = setTimeout(() => {
-    //             navigate('/login')
-    //         }, 2000)
-    //         return () => clearTimeout(timeoutId)
-    //     }
-    // }, [isError, navigate, persist, token])
 
     let content
     if (!persist) { // persist: no
@@ -67,14 +57,13 @@ const PersistLogin = () => {
         console.log('loading')
         content = <PulseLoader color={"#FFF"} />
     } else if (isError) { //persist: yes, token: no
-        console.log(`${error?.data?.message}`)
-        // content = (
-        //     <p className='errmsg'>
-        //         {`${error?.data?.message} - `}
-        //         Redirecting to <Link to='/login'>login page</Link>
-        //     </p>
-        // )
-        content = <Login />
+        console.log('error')
+        content = (
+            <p className='errmsg'>
+                {`${error?.data?.message} - `}
+                <Link to="/login">Please login again</Link>.
+            </p>
+        )
     } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
         console.log('success')
         content = <Outlet />

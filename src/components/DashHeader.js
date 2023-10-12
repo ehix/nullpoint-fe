@@ -13,7 +13,7 @@ import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 
-const DASH_REGEX = /^\/dash(\/)?$/
+// const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 
@@ -35,16 +35,22 @@ const DashHeader = () => {
     }, [isSuccess, navigate])
 
     // Button navigation
-    const onYouClicked = () =>  navigate('/dash')
+    const onYouClicked = () => {
+        if (isUser || isAdmin) { // i.e. if logged in
+            navigate('/dash')
+        } else {
+            navigate('/login')
+        }
+    }
     const onNewNoteClicked = () => navigate('/dash/notes/new')
     const onNewUserClicked = () => navigate('/dash/users/new')
     const onNotesClicked = () => navigate('/dash/notes')
     const onUsersClicked = () => navigate('/dash/users')
 
-    let dashClass = null
-    if (!DASH_REGEX.test(pathname) && !NOTES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) {
-        dashClass = "dash-header__container--small"
-    }
+    // let dashClass = null
+    // if (!DASH_REGEX.test(pathname) && !NOTES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) {
+    //     dashClass = "dash-header__container--small"
+    // }
 
     let newNoteButton = null
     if (NOTES_REGEX.test(pathname)) {
@@ -131,11 +137,11 @@ const DashHeader = () => {
     } else {
         buttonContent = (
             <>
-                {selfButton}
                 {newNoteButton}
                 {newUserButton}
                 {notesButton}
                 {userButton}
+                {selfButton}
                 {logoutButton}
             </>
         )
@@ -146,9 +152,9 @@ const DashHeader = () => {
             <p className={errClass}>{error?.data?.message}</p>
 
             <header className="dash-header">
-                <div className={`dash-header__container ${dashClass}`}>
+                <div className={"dash-header__container"}>
                     <Link to="/">
-                        <h1 className="dash-header__title">nullpoint</h1>
+                        <h1 className="dash-header__title">nullpøint</h1>
                     </Link>
                     <nav className="dash-header__nav">
                         {buttonContent}

@@ -1,11 +1,45 @@
 import { React } from 'react'
+import useTitle from '../../hooks/useTitle'
 
 export const NotFound = () => {
+    useTitle(`nullpoint: 404`)
     return (
         <section className="public">
             <main className="not-found__main">
-                    <h1 class="not-found__title">Page nøt found</h1>
+                <h1 class="not-found__title line-up">Page nøt found</h1>
             </main>
+            <div class="snowflakes" aria-hidden="true">
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+                <div class="snowflake">
+                    �
+                </div>
+            </div>
         </section>
     )
 }
