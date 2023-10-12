@@ -9,7 +9,11 @@
 /* || VARIABLES */
 :root {
   /* COLORS */
-  --BGCOLOR: #d1cdb7;
+  --BG-LT: #d1cdb7;
+  --BG-DK: #6B665B;
+  --BG-GRAD-LT: linear-gradient(to right, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px), linear-gradient(to bottom, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px);
+  --BG-GRAD-DK: linear-gradient(to right, #45413829 1px, #ccc8b100 1px), linear-gradient(to bottom, #45413829 1px, #ccc8b100 1px);
+
   --BORDER-COLOR: #454138;
   --TEXT-DK: #454138;
   --TEXT-LT: #ECEBE3;
@@ -24,6 +28,9 @@
   --TABLE-BGCOLOR: #dcd8c0;
   --TABLE-COLOR: #000;
   --INPUT-INVALID: #F00;
+  --ACC-COLOR: #cd8c74;
+  --ACC-SHADOW-COLOR: #cd8c7433;
+
 }
 
 /* || UTILITY CLASSES */
@@ -76,12 +83,12 @@ body {
   font-family: "Source Code Pro", Arial, sans-serif;
   letter-spacing: 0.03rem;
   font-weight: lighter;
-  background-color: var(--BGCOLOR);
+  background-color: var(--BG-LT);
   color: var(--TEXT-DK);
   background-size: cover;
   background-position: top right;
   background-size: 0.3rem 0.3rem;
-  background-image: linear-gradient(to right, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px), linear-gradient(to bottom, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px);
+  background-image: var(--BG-GRAD-LT);
 }
 
 input,
@@ -112,16 +119,16 @@ a:focus-visible {
 }
 
 /* || PAGES */
+.public {
+  /* padding: 1em; */
+  flex-grow: 1;
+}
+
 .public,
 .welcome {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.public {
-  /* padding: 1em; */
-  flex-grow: 1;
 }
 
 .public__main,
@@ -130,6 +137,22 @@ a:focus-visible {
   /* border-top: 2px solid var(--BORDER-COLOR); */
   /* border-bottom: 2px solid var(--BORDER-COLOR); */
   padding: 1em 0;
+}
+
+.not-found__main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-content: center;
+  white-space: nowrap;
+}
+
+.not-found__title {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
 }
 
 .welcome a::before {
@@ -173,21 +196,19 @@ a:focus-visible {
 
 .public-footer {
   font-size: 0.75rem;
-  /* letter-spacing: 0.1rem; */
   position: sticky;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* justify-content: flex-start; */
   align-items: center;
   place-content: center;
-  bottom: 0;
-  z-index: 1;
+  bottom: 0;  
   background-color: var(--BORDER-COLOR);
   color: var(--TEXT-LT);
   opacity: 0.75;
   padding: 3em;
   gap: 0.25em;
+  z-index: 1;
 }
 
 .public-footer .socials {

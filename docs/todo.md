@@ -2,7 +2,10 @@
 Refactor:
 1. Create blog site
 2. Change roles to: Employee -> X, Manager -> User, Admin -> Admin
-    
+   - Workaround, Ignore Employees for now, and use the key above to finish nav logic?
+3. Change username to email, or require that somehow
+4. Let users edit their own info
+
 QoL:
 1. Handle `Failed to load resource: net::ERR_CONNECTION_REFUSED`
 2. Add a 404 page
@@ -14,3 +17,5 @@ CSS:
      - Sass
      - Less IntelliSense
      - Stylus Supremacy
+2. Change the spinner, start with the colour
+3. form__checkbox change check colour PulseLoader

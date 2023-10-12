@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+:root {
+    --BG-COLOR: #6B665B;
+    --BG-GRAD: linear-gradient(to right, #45413829 1px, #ccc8b100 1px), linear-gradient(to bottom, #45413829 1px, #ccc8b100 1px);
+    --TEXT-COLOR: #ECEBE3;
+    --TEXT-OP: 0.8;
+    --SHADOW-COLOR: #ecebe324;
+    --ACC-COLOR: #cd8c74;
+    --ACC-SHADOW-COLOR: #cd8c7433;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Source Code Pro", Arial, sans-serif;
+    font-weight: lighter;
+    letter-spacing: 0.1rem;
+    text-shadow: 0.1rem 0.1rem 0 var(--SHADOW-COLOR);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--BG-COLOR);
+    background-image: var(--BG-GRAD);
+    background-size: 0.3rem 0.3rem;
+    color: var(--TEXT-COLOR);
+    opacity: var(--TEXT-OP);
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+}
+
+.line-up {
+    animation-name: animate-line-up;
+    animation-duration: 3s;
+    animation-fill-mode: forward;
+}
+
+@keyframes animate-line-up {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.not-found {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+    margin: 0
+}
