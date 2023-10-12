@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>nullpoint</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+        integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+        crossorigin="anonymous" defer></script>
+    <script src="/js/run.js" type="module"></script>
+    <link rel="stylesheet" type="text/css" href="css/np.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DotGothic16">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+</head>
+
+
+
+<body>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-opacity w3-card np-darkest">
+            <!-- Stacked menu button when minimised -->
+            <a type="navbar" class="w3-bar-item w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="stackedNavbar()" title="toggle navbar"><i class="fa fa-bars"></i></a>
+            <a id="bar-title" href="#" type="navbar" class="w3-bar-item w3-padding-large"></a>
+            <a href="/games" type="navbar" class="w3-bar-item w3-padding-large w3-hide-small">games</a>
+            <a href="#contact" type="navbar" class="w3-bar-item w3-padding-large w3-hide-small">contact</a>
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button type="dropbtn" class="w3-padding-large" title="more">more <i
+                        class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card">
+                    <a href="#none" type="submenu" class="w3-bar-item">...</a>
+                    <a href="#none" type="submenu" class="w3-bar-item">...</a>
+                    <a href="#none" type="submenu" class="w3-bar-item">...</a>
+                </div>
+            </div>
+            <!-- Search button -->
+            <!-- <a href="javascript:void(0)"
+                class="fa-2x np-hover-accent w3-padding-large w3-bar-item w3-hide-small w3-right"><i
+                    class="fa fa-search"></i></a> -->
+        </div>
+    </div>
+
+    <!-- Navbar minimised -->
+    <div id="navstack" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:72px">
+        <a href="/games" type="stack" class="w3-bar-item w3-padding-large" onclick="stackedNavbar()">games</a>
+        <a href="#contact" type="stack" class="w3-bar-item w3-padding-large" onclick="stackedNavbar()">contact</a>
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-container">
+        <canvas id="webgl-canvas"></canvas>
+    </div>
+
+
+    <!-- Contact -->
+    <div class="w3-container w3-content w3-padding-64" id="contact">
+        <h2 class="w3-wide w3-center">Contact</h2>
+        <p class="w3-opacity w3-center"><i>Drop a note!</i></p>
+        <div class="w3-row w3-padding-32">
+            <!-- <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Birmingham, UK<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 12345678<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+      </div> -->
+            <div class="w3-col m15 w3-border">
+                <form action="https://formsubmit.co/contact@nullpoint.cloud" method="POST">
+                    <fieldset>
+                        <legend>Information</legend>
+                        <div class="w3-row-padding" style="margin:0 -16px 16px -16px">
+                            <div class="w3-half">
+                                <input class="w3-input w3-border" type="text" name="name" placeholder="Name"
+                                    autocomplete="off" required>
+                            </div>
+                            <div class="w3-half">
+                                <input class="w3-input w3-border" type="email" name="email" placeholder="Email"
+                                    autocomplete="off" required>
+                            </div>
+                        </div>
+                        <p>
+                            <label class="copy font-weight--medium formLabel margin--bottom-3"
+                                for="message">Message</label>
+                            <textarea class="w3-input w3-border" type="text" name="message" placeholder="..."
+                                autocomplete="off" required></textarea>
+                        </p>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Site contact">
+                        <input type="hidden" name="_next" value="https://nullpoint.cloud/">
+                        <button class="full w3-border w3-padding-large" type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-xlarge np-darkest">
+        <a href="https://github.com/ehix"><i class="fa fa-github w3-hover-opacity"></i></a>
+        <a href="https://linkedin.com/in/alex-downing"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+        <p class="w3-medium">© nullpoint 2023</a>
+        </p>
+    </footer>
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function stackedNavbar() {
+            var x = document.getElementById("navstack");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+
+</html>
