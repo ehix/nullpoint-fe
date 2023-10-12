@@ -4,7 +4,8 @@ import useTitle from '../../hooks/useTitle'
 
 const Welcome = () => {
 
-    const { username, isManager, isAdmin } = useAuth()
+    // const { username, isManager, isAdmin } = useAuth()
+    const { username, isUser, isAdmin } = useAuth()
 
     useTitle(`nullpoint: ${username}`)
 
@@ -22,9 +23,9 @@ const Welcome = () => {
 
             <p><Link to="/dash/notes/new">Add New Note</Link></p>
 
-            {(isManager || isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
+            {(isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
 
-            {(isManager || isAdmin) && <p><Link to="/dash/users/new">Add New User</Link></p>}
+            {(isAdmin) && <p><Link to="/dash/users/new">Add New User</Link></p>}
 
         </section>
     )

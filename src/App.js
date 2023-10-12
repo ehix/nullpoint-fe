@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
+import { ROLES } from './config/roles'
 import Layout from './components/Layout'
 import Public from './components/Public'
+import NotFound from './features/auth/NotFound'
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout'
 import Welcome from './features/auth/Welcome'
@@ -13,7 +15,6 @@ import NewNote from './features/notes/NewNote'
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
-import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         {/* public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
@@ -34,7 +36,8 @@ function App() {
 
                 <Route index element={<Welcome />} />
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
+                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                  {/* <!> Make it so users can edit their own accounts */}
                   <Route path="users">
                     <Route index element={<UsersList />} />
                     <Route path=":id" element={<EditUser />} />
@@ -52,7 +55,6 @@ function App() {
             </Route>
           </Route>
         </Route>{/* End Protected Routes */}
-
       </Route>
     </Routes >
   );

@@ -6,10 +6,6 @@ const Public = () => {
     const content = (
         <section className="public">
             <DashHeader />
-            {/* <header>
-                <h1><span className="nowrap">nullpøint</span></h1>
-                <Link to="/login">Login</Link>
-            </header> */}
             <main className="public__main">
                 <p></p>
                 <br />

@@ -18,7 +18,7 @@ const NOTES_REGEX = /^\/dash\/notes(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 
 const DashHeader = () => {
-    const { isManager, isAdmin } = useAuth()
+    const { isUser, isAdmin } = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -35,14 +35,7 @@ const DashHeader = () => {
     }, [isSuccess, navigate])
 
     // Button navigation
-    const onYouClicked = () => {
-        // <!> This is a true hack, figure out how to confirm user is logged in
-        if (isManager || isAdmin) {
-            navigate('/dash')
-        } else {
-            navigate('/login')
-        }
-    }
+    const onYouClicked = () =>  navigate('/dash')
     const onNewNoteClicked = () => navigate('/dash/notes/new')
     const onNewUserClicked = () => navigate('/dash/users/new')
     const onNotesClicked = () => navigate('/dash/notes')
@@ -80,7 +73,7 @@ const DashHeader = () => {
     }
 
     let userButton = null
-    if (isManager || isAdmin) {
+    if (isAdmin) {
         if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
             userButton = (
                 <button
@@ -154,7 +147,7 @@ const DashHeader = () => {
 
             <header className="dash-header">
                 <div className={`dash-header__container ${dashClass}`}>
-                    <Link to="/dash">
+                    <Link to="/">
                         <h1 className="dash-header__title">nullpoint</h1>
                     </Link>
                     <nav className="dash-header__nav">
