@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+    faUser,
     faFileCirclePlus,
     faFilePen,
     faUserGear,
@@ -33,6 +34,15 @@ const DashHeader = () => {
         if (isSuccess) navigate('/')
     }, [isSuccess, navigate])
 
+    // Button navigation
+    const onYouClicked = () => {
+        // <!> This is a true hack, figure out how to confirm user is logged in
+        if (isManager || isAdmin) {
+            navigate('/dash')
+        } else {
+            navigate('/login')
+        }
+    }
     const onNewNoteClicked = () => navigate('/dash/notes/new')
     const onNewUserClicked = () => navigate('/dash/users/new')
     const onNotesClicked = () => navigate('/dash/notes')
@@ -97,6 +107,19 @@ const DashHeader = () => {
         )
     }
 
+    let selfButton = null
+    if (pathname !== '/dash') {
+        selfButton = (
+            <button
+                className="icon-button"
+                title="You"
+                onClick={onYouClicked}
+            >
+                <FontAwesomeIcon icon={faUser} />
+            </button>
+        )
+    }
+
     const logoutButton = (
         <button
             className="icon-button"
@@ -115,6 +138,7 @@ const DashHeader = () => {
     } else {
         buttonContent = (
             <>
+                {selfButton}
                 {newNoteButton}
                 {newUserButton}
                 {notesButton}

@@ -1,21 +1,22 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import DashHeader from './DashHeader'
+import PublicFooter from './PublicFooter'
 
 const Public = () => {
     const content = (
         <section className="public">
-            <header>
-                <h1>Welcome to <span className="nowrap">nullpoint</span></h1>
-            </header>
+            <DashHeader />
+            {/* <header>
+                <h1><span className="nowrap">nullpøint</span></h1>
+                <Link to="/login">Login</Link>
+            </header> */}
             <main className="public__main">
-                <p>Yep</p>
+                <p></p>
                 <br />
                 <p></p>
             </main>
-            <footer>
-                <Link to="/login">Login</Link>
-            </footer>
+            <PublicFooter />
         </section>
-
     )
     return content
 }
