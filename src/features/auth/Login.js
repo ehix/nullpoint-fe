@@ -62,13 +62,13 @@ const Login = () => {
     if (isLoading) return <PulseLoader color={"#FFF"} />
 
     const content = (
-        <section className="public">
+        <section className="public dark-theme">
             <header>
                 <h1>Login</h1>
             </header>
-            <main className="login">
-                <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
+            <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
+            <main className="login">
                 <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
                     <input
@@ -106,6 +106,7 @@ const Login = () => {
                     </label>
                 </form>
             </main>
+            
             <footer>
                 <Link to="/">Back to Home</Link>
             </footer>
