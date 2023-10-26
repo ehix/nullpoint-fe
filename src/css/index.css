@@ -20,7 +20,7 @@
   --TEXT-OP: 0.8;
   --BORDER-COLOR: rgb(69, 65, 56);
   --BORDER-COLOR-OP: rgba(69, 65, 56, 0.65);
-  --BORDER-DKR: rgb(33,33,33);
+  --BORDER-DKR: rgb(33, 33, 33);
   --TEXT-DK: rgb(69, 65, 56);
   --TEXT-LT: rgb(236, 235, 227);
   --ICON-LT: rgb(236, 235, 227);
@@ -45,10 +45,12 @@
 /* || UTILITY CLASSES */
 .errmsg {
   display: inline-block;
-  background-color: var(--ACC-COLOR-OP);
+  background-color: var(--BLEACH);
   color: var(--TEXT-DK);
   padding: 0.25em;
   margin-bottom: 0.5em;
+  box-shadow: 0.2em 0.2em 0.1em 0 var(--SHADOW-DK-OP25);
+
 }
 
 .errmsg a:any-link {
@@ -91,6 +93,7 @@ select {
 
 button {
   letter-spacing: 0.05rem;
+  color: var(--TEXT-LT);
 }
 
 #root {
@@ -177,25 +180,26 @@ a:focus-visible {
   border: 2px solid var(--BORDER-DKR);
   background-color: var(--BG-LT-OP2);
   box-shadow: 0.2em 0.2em 0.2em 0 var(--SHADOW-DK-OP75);
+  border-radius: 5px;
 }
 
 .login button:not(:disabled),
 .button {
+  position: relative;
   padding: 0.5rem;
   font-size: 1em;
   outline: none;
   appearance: none;
-  border-radius: 0;
+  border-radius: 5px;
   background-color: var(--BLEACH);
   color: var(--TEXT-DK);
-  /* font-family: inherit; */
-  /* letter-spacing: inherit; */
-  /* font-weight: inherit; */
   cursor: pointer;
   transition-duration: 0.2s;
   transition-property: color, background-color, box-shadow;
-  position: relative;
   z-index: 1;
+  /* font-family: inherit; */
+  /* letter-spacing: inherit; */
+  /* font-weight: inherit; */
 }
 
 .login button:not(:disabled):hover,
@@ -232,7 +236,7 @@ a:focus-visible {
 .login button:not(:disabled):hover,
 .button:hover {
   background-color: transparent;
-  color: var(--INPUT-BGCOLOR);
+  color: var(--TEXT-LT);
 }
 
 .login button:not(:disabled):hover:after,
@@ -305,10 +309,10 @@ a:focus-visible {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
-  /* white-space: nowrap; */
-  /* overflow: hidden; */
+  white-space: nowrap;
+  overflow: hidden;
   /* gap: 1em; */
-  /* margin-left: 10px */
+  margin-left: 10px;
 }
 
 .dash-header__nav-icons {
@@ -507,7 +511,7 @@ th {
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 0.5em;
+  gap: 0.75em;
 }
 
 .form__title-row {
@@ -516,17 +520,23 @@ th {
   align-items: center;
 }
 
-.login .form__input{
+.login .form__input {
   cursor: pointer;
   color: var(--BORDER-COLOR-OP);
   background-color: var(--INPUT-BGCOLOR);
   box-shadow: inset 0em 0em 0.4em 0.1em var(--SHADOW-DK-OP25);
 }
 
+.login input:focus {
+  outline: none !important;
+  border-color: var(--BLEACH);
+  box-shadow: 0 0 10px var(--BLEACH);
+}
+
 .form__input,
 .form__submit-button {
   padding: 0.5em;
-  /* border-radius: 15px; */
+  border-radius: 5px;
 }
 
 .form__input--text {
@@ -541,6 +551,8 @@ th {
 .form__checkbox {
   width: 24px;
   height: 24px;
+  color: var(--INPUT-BGCOLOR);
+  background-color: var(--INPUT-BGCOLOR);
   accent-color: var(--ACC-COLOR);
 }
 
