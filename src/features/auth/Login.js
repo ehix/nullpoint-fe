@@ -63,54 +63,58 @@ const Login = () => {
 
     const content = (
         <section className="public dark-theme">
-            <header>
-                <h1>Login</h1>
-            </header>
             <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
+            <header>
+                <h1 className="login__title">Login</h1>
+            </header>
 
             <main className="login">
                 <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        className="form__input"
-                        type="text"
-                        id="username"
-                        ref={userRef}
-                        value={username}
-                        onChange={handleUserInput}
-                        autoComplete="off"
-                        required
-                    />
+                    <fieldset className="login__fieldset">
+                        <legend className="login__legend">Credentials</legend>
+                        <div className="form__col">
 
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        className="form__input"
-                        type="password"
-                        id="password"
-                        onChange={handlePwdInput}
-                        value={password}
-                        required
-                    />
-                    <button className="form__submit-button">Sign In</button>
+                            <input
+                                className="form__input"
+                                type="text"
+                                placeholder="Username"
+                                id="username"
+                                ref={userRef}
+                                value={username}
+                                onChange={handleUserInput}
+                                autoComplete="off"
+                                required
+                            />
 
-
-                    <label htmlFor="persist" className="form__persist">
-                        <input
-                            type="checkbox"
-                            className="form__checkbox"
-                            id="persist"
-                            onChange={handleToggle}
-                            checked={persist}
-                        />
-                        Trust This Device
-                    </label>
+                            <input
+                                className="form__input"
+                                type="password"
+                                placeholder="Password"
+                                id="password"
+                                onChange={handlePwdInput}
+                                value={password}
+                                required
+                            />
+                            <button className="login__button animated-button">Sign In</button>
+                            <label htmlFor="persist" className="form__persist">
+                                <input
+                                    type="checkbox"
+                                    className="form__checkbox"
+                                    id="persist"
+                                    onChange={handleToggle}
+                                    checked={persist}
+                                />
+                                Trust This Device
+                            </label>
+                        </div>
+                    </fieldset>
                 </form>
             </main>
-            
+
             <footer>
                 <Link to="/">Back to Home</Link>
             </footer>
-        </section>
+        </section >
     )
 
     return content
