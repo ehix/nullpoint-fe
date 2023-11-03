@@ -13,6 +13,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
+import { HashLink as Link } from 'react-router-hash-link';
 
 // const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
@@ -78,14 +79,13 @@ const DashHeader = () => {
             <button
                 className="text-button"
                 title="Contact"
-                onClick={() => navigate('#contact')}
-            >contact
+            ><Link to="#contact" smooth>contact</Link>
             </button>
         )
 
         moreButton = (
             <button
-              className="text-button"
+              className="text-button drop-down-button"
               title="More"
               onClick={() => navigate('/more')}
             //   style={{ minWidth: '80px' }}
