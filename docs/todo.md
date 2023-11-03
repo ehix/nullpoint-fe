@@ -1,4 +1,6 @@
 # TODO
+https://github.com/gitdagray/mern_stack_course/tree/main
+
 Refactor:
 1. Create blog site
    1. https://www.youtube.com/watch?v=-foo92lFIto
