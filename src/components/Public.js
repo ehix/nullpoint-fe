@@ -1,6 +1,8 @@
 // import { Link } from 'react-router-dom'
 import DashHeader from './DashHeader'
 import PublicFooter from './PublicFooter'
+import Canvas from './Canvas'
+import ContactForm from './ContactForm'
 
 const Public = () => {
     const content = (
@@ -9,8 +11,14 @@ const Public = () => {
                 <DashHeader />
                 <section className="public">
                     <main className="public__main">
-                        <h2 class="w3-wide w3-center">Contact</h2>
-                        <p class="w3-opacity w3-center"><i>Drop a note!</i></p>
+                        <section className="canvas">
+                            <Canvas />
+                        </section>
+                        <section className="contact">
+                            <h2 id="contact" className="contact__header">Contact</h2>
+                            <p><i className="contact__subheader">Drop a note!</i></p>
+                            <ContactForm />
+                        </section>
                     </main>
                 </section>
                 <PublicFooter />
