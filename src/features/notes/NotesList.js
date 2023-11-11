@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const NotesList = () => {
     useTitle('nullpoint: Notes List')
 
-    const { username, isUser, isAdmin } = useAuth()
+    const { username, isAdmin } = useAuth()
 
     const {
         data: notes,
@@ -15,11 +15,14 @@ const NotesList = () => {
         isSuccess,
         isError,
         error
-    } = useGetNotesQuery('notesList', {
-        pollingInterval: 60000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true
-    })
+    } = useGetNotesQuery('notesList')
+
+    // <!> Removed prefetch logic for now
+    // } = useGetNotesQuery('notesList', {
+    //     pollingInterval: 60000,
+    //     refetchOnFocus: true,
+    //     refetchOnMountOrArgChange: true
+    // })
 
     let content
 
@@ -46,10 +49,10 @@ const NotesList = () => {
                 <thead className="table__thead">
                     <tr>
                         <th scope="col" className="table__th note__status">Status</th>
+                        <th scope="col" className="table__th note__username">Author</th>
+                        <th scope="col" className="table__th note__title">Title</th>
                         <th scope="col" className="table__th note__created">Created</th>
                         <th scope="col" className="table__th note__updated">Updated</th>
-                        <th scope="col" className="table__th note__title">Title</th>
-                        <th scope="col" className="table__th note__username">Author</th>
                         <th scope="col" className="table__th note__edit">Edit</th>
                     </tr>
                 </thead>

@@ -11,7 +11,7 @@ const Note = ({ noteId }) => {
             note: data?.entities[noteId]
         }),
     })
-
+    
     const navigate = useNavigate()
 
     if (note) {
@@ -29,10 +29,10 @@ const Note = ({ noteId }) => {
                         : <span className="note__status--draft">Draft</span>
                     }
                 </td>
+                <td className="table__cell note__username">{note.username}</td>
+                <td className="table__cell note__title">{note.title}</td>
                 <td className="table__cell note__created">{created}</td>
                 <td className="table__cell note__updated">{updated}</td>
-                <td className="table__cell note__title">{note.title}</td>
-                <td className="table__cell note__username">{note.username}</td>
                 <td className="table__cell">
                     <button
                         className="icon-button table__button"
