@@ -90,6 +90,25 @@ const EditNoteForm = ({ note, users }) => {
         )
     }
 
+    let authorSelect
+    if (isAdmin) {
+        authorSelect = (
+            <div>
+                <label className="form__label form__checkbox-container" htmlFor="username">
+                    Author:</label>
+                <select
+                    id="username"
+                    name="username"
+                    className="form__select"
+                    value={userId}
+                    onChange={onUserIdChanged}
+                >
+                    {options}
+                </select>
+            </div>
+        )
+    }
+
     const content = (
         <>
             <p className={errClass}>{errContent}</p>
@@ -133,7 +152,7 @@ const EditNoteForm = ({ note, users }) => {
                 <div className="form__row">
                     <div className="form__divider">
                         <label className="form__label form__checkbox-container" htmlFor="note-completed">
-                            WORK COMPLETE:
+                            Publish:
                             <input
                                 className="form__checkbox"
                                 id="note-completed"
@@ -143,18 +162,7 @@ const EditNoteForm = ({ note, users }) => {
                                 onChange={onCompletedChanged}
                             />
                         </label>
-
-                        <label className="form__label form__checkbox-container" htmlFor="note-username">
-                            ASSIGNED TO:</label>
-                        <select
-                            id="note-username"
-                            name="username"
-                            className="form__select"
-                            value={userId}
-                            onChange={onUserIdChanged}
-                        >
-                            {options}
-                        </select>
+                        {authorSelect}
                     </div>
                     <div className="form__divider">
                         <p className="form__created">Created:<br />{created}</p>

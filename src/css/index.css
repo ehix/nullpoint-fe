@@ -27,8 +27,8 @@
   --LINK-COLOR: whitesmoke;
   --LINK-HOVER: rgba(245, 245, 245, 0.9);
   --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
-  --STATUS-COMPLETE: limegreen;
-  --STATUS-OPEN: firebrick;
+  --STATUS-PUBLISHED: limegreen;
+  --STATUS-DRAFT: firebrick;
   --INPUT-BGCOLOR: rgb(220, 216, 192);
   --INPUT-BORDER: rgb(204, 204, 204, 0.7);
   --TABLE-COLOR: rgb(0, 0, 0);
@@ -456,11 +456,11 @@ th {
 }
 
 .note__status--open {
-  color: var(--STATUS-OPEN);
+  color: var(--STATUS-DRAFT);
 }
 
 .note__status--completed {
-  color: var(--STATUS-COMPLETE);
+  color: var(--STATUS-PUBLISHED);
 }
 
 

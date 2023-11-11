@@ -93,5 +93,5 @@ export const {
     selectAll: selectAllNotes,
     selectById: selectNoteById,
     selectIds: selectNoteIds
-    // Pass in a selector that returns the notes slice of state
+    // Pass in a selector that returns the notes slice of state, or falls back to initialState
 } = notesAdapter.getSelectors(state => selectNotesData(state) ?? initialState)
