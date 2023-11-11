@@ -455,11 +455,11 @@ th {
   font-weight: bold;
 }
 
-.note__status--open {
+.note__status--draft {
   color: var(--STATUS-DRAFT);
 }
 
-.note__status--completed {
+.note__status--published {
   color: var(--STATUS-PUBLISHED);
 }
 
