@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
+import useScrollDirection from '../hooks/useScrollDirection'
 
 const PublicFooter = () => {
+    const scrollDirection = useScrollDirection();    
     const socialButtons = (
         <div class="socials">
             <a href="https://github.com/ehix/" target="_blank" rel="noopener noreferrer">
@@ -14,7 +16,7 @@ const PublicFooter = () => {
     )
 
     const content = (
-        <footer className="public-footer">
+        <footer className={`public-footer ${ scrollDirection === "down" ? "hide" : "show"}`}>
             {socialButtons}
             <p>© nullpoint 2023</p>
         </footer >

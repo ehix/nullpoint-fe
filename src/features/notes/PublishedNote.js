@@ -11,18 +11,20 @@ const PublishedNote = ({ noteId }) => {
     })
 
     const navigate = useNavigate()
-    
+
     if (note) {
         const userProfile = () => navigate(`/profile/${note.username}`)
-        const created = new Date(note.createdAt).toLocaleString('en-GB', { day: 'numeric', month: 'long' })
+        const created = new Date(note.createdAt).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric'})
         // const updated = new Date(note.updatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'long' })
         return (
             <div className="post__content">
-                <h1>{note.title}</h1>
-                <p className="">{created}</p>
+                <h1 className="post__title">{note.title}</h1>
                 {/* <p className="">{updated}</p> */}
-                <p onClick={userProfile} className="">{note.username}</p>
-                <p className="">{note.text.substring(0, 80)}...</p>
+                <p className="post__body">{note.text.substring(0, 80)}...</p>
+                <div className="post__details">
+                    <p onClick={userProfile} className="post__author">@{note.username}</p>
+                    <p className="post__date">{created}</p>
+                </div>
             </div>
         )
     } else return null

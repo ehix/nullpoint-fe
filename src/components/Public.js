@@ -16,12 +16,13 @@ const Public = () => {
                             <Canvas />
                         </section> */}
                         <section className="posts">
-                        <h2 id="posts" className="contact__header">Latest</h2>
+                            <h2 id="posts" className="public__header">Latest</h2>
+                            <p><i className="public__subheader">What's new?</i></p>
                             <PublishedNotesList />
                         </section>
                         <section className="contact">
-                            <h2 id="contact" className="contact__header">Contact</h2>
-                            <p><i className="contact__subheader">Drop a note!</i></p>
+                            <h2 id="contact" className="public__header">Contact</h2>
+                            <p><i className="public__subheader">Drop a note!</i></p>
                             <ContactForm />
                         </section>
                     </main>

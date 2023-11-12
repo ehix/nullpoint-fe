@@ -12,6 +12,7 @@ import {
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
+import useScrollDirection from '../hooks/useScrollDirection'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { HashLink as Link } from 'react-router-hash-link';
 
@@ -21,6 +22,7 @@ const USERS_REGEX = /^\/dash\/users(\/)?$/
 
 const DashHeader = () => {
     const { isUser, isAdmin } = useAuth()
+    const scrollDirection = useScrollDirection();
     const loggedIn = () => {
         if (isUser || isAdmin) {
             return true
@@ -85,14 +87,14 @@ const DashHeader = () => {
 
         moreButton = (
             <button
-              className="text-button drop-down-button"
-              title="More"
-              onClick={() => navigate('/more')}
+                className="text-button drop-down-button"
+                title="More"
+                onClick={() => navigate('/more')}
             //   style={{ minWidth: '80px' }}
             >
-              more&nbsp;<FontAwesomeIcon icon={faCaretDown} />
+                more&nbsp;<FontAwesomeIcon icon={faCaretDown} />
             </button>
-          )
+        )
     }
 
     let textButtonContent
@@ -208,10 +210,14 @@ const DashHeader = () => {
         )
     }
 
+    // <div className={`header ${ scrollDirection === "down" ? "hide" : "show"}`}>
+    //   <div>Disappearing Header</div>
+    // </div>
+
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
-            <header className="dash-header">
+            <header className={`dash-header ${scrollDirection === "down" ? "hide" : "show"}`}>
                 <div className={"dash-header__container"}>
                     {/* <Link to="/">
                         <h1 className="dash-header__title">nullpøint</h1>
