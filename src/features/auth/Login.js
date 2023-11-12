@@ -104,7 +104,7 @@ const Login = () => {
                                     onChange={handleToggle}
                                     checked={persist}
                                 />
-                                Trust This Device
+                                Trust this device
                             </label>
                         </div>
                     </fieldset>
@@ -112,7 +112,7 @@ const Login = () => {
             </main>
 
             <footer>
-                <Link to="/">Back to Home</Link>
+                <Link to="/">Back</Link>
             </footer>
         </section >
     )

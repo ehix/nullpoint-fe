@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -28,7 +28,7 @@ const ContactForm = () => {
                 </div>
                 <input type="text" name="_honey" style={{ display:"none"}}/>
                 <input type="hidden" name="_captcha" value="false"/>
-                <input type="hidden" name="_subject" value="Site contact"/>
+                <input type="hidden" name="_subject" value="contact"/>
             </fieldset>
         </form>
     );
