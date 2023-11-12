@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
 import useScrollDirection from '../hooks/useScrollDirection'
+import { useCurrentYear } from '../hooks/useCurrentYear';
 
 const PublicFooter = () => {
-    const scrollDirection = useScrollDirection();    
+    const year = useCurrentYear();
+    const scrollDirection = useScrollDirection();
     const socialButtons = (
-        <div class="socials">
+        <div className="socials">
             <a href="https://github.com/ehix/" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faGithub} />
             </a>
@@ -16,9 +18,9 @@ const PublicFooter = () => {
     )
 
     const content = (
-        <footer className={`public-footer ${ scrollDirection === "down" ? "hide" : "show"}`}>
+        <footer className={`public-footer ${scrollDirection === "down" ? "hide" : "show"}`}>
             {socialButtons}
-            <p>© nullpoint 2023</p>
+            <p>© nullpoint {year}</p>
         </footer >
     )
     return content

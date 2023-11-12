@@ -2,9 +2,10 @@
 // import { faHouse } from "@fortawesome/free-solid-svg-icons"
 // import { useNavigate, useLocation } from 'react-router-dom'
 // import useAuth from "../hooks/useAuth"
+import { useCurrentYear } from '../hooks/useCurrentYear';
 
 const DashFooter = () => {
-
+    const year = useCurrentYear();
     // const { username, status } = useAuth()
 
     // const navigate = useNavigate()
@@ -28,10 +29,10 @@ const DashFooter = () => {
     const content = (
         <footer className="dash-footer">
             <div>
-            {/* <p>Current User: {username}</p>
-            <p>Status: {status}</p> */}
+                {/* <p>Current User: {username}</p> */}
+                {/* <p>Status: {status}</p> */}
             </div>
-            <p>© nullpoint 2023</p>
+            <p>© nullpoint {year}</p>
         </footer >
     )
     return content

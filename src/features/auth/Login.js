@@ -3,12 +3,14 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
+import { useCurrentYear } from '../../hooks/useCurrentYear';
 import usePersist from '../../hooks/usePersist'
 import useTitle from '../../hooks/useTitle'
 import PulseLoader from 'react-spinners/PulseLoader'
 
 const Login = () => {
     useTitle('Login')
+    const year = useCurrentYear();
 
     const userRef = useRef()
     const errRef = useRef()
@@ -108,6 +110,7 @@ const Login = () => {
                             </label>
                         </div>
                     </fieldset>
+                    <p>© nullpoint {year}</p>
                 </form>
             </main>
 
