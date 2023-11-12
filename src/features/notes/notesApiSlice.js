@@ -84,6 +84,19 @@ export const notesApiSlice = apiSlice.injectEndpoints({
                 return notesAdapter.setAll(initialState, loadedNotes)
             },
         }),
+        getPublishedById: builder.query({
+            query: (id) => ({
+                url: `/published/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
+            transformResponse: responseData => {
+                const note = responseData;
+                note.id = note._id;
+                return note;
+            },
+        }),
     }),
 })
 
@@ -92,7 +105,8 @@ export const {
     useAddNewNoteMutation,
     useUpdateNoteMutation,
     useDeleteNoteMutation,
-    useGetPublishedQuery
+    useGetPublishedQuery,
+    useGetPublishedByIdQuery
 } = notesApiSlice
 
 // returns the query result object
