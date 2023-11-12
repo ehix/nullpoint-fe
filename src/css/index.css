@@ -20,6 +20,7 @@
 
   --DIM-GREY: rgb(69, 65, 56);
   --DIM-GREY-OP7: rgba(69, 65, 56, 0.7);
+  --DIM-GREY-OP2: rgba(69, 65, 56, 0.2);
   --ERROR: firebrick;
   --INACTIVE: lightgray;
   --LINK-COLOR: whitesmoke;
@@ -38,7 +39,7 @@
   --BONE-SHADOW-OP7: rgb(186, 181, 161, 0.7);
   --INDIAN-RED: rgb(217, 82, 95);
   --JASPER: rgb(205, 102, 76);
-  --BUFF: rgba(206, 143, 119, 1);
+  --BUFF: rgba(206, 143, 119, .8);
   --CELTIC-BLUE: rgb(39, 109, 190);
   --CELTIC-BLUE-OP5: rgb(39, 109, 190, 0.5);
   --OXFORD-BLUE: rgb(28, 37, 59);
@@ -454,8 +455,7 @@ a:focus-visible {
   flex-grow: 1;
 }
 
-.public-footer.hide {
-  position: sticky;
+.public-footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -464,15 +464,6 @@ a:focus-visible {
   bottom: 0;
   padding: 1em;
   gap: 0.25em;
-  z-index: 1;
-  transition-property: all; 
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 1s;
-
-}
-
-.public-footer.show {
-  bottom: -6rem;
 }
 
 .public-footer .socials {
