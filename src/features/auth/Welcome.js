@@ -4,8 +4,7 @@ import useTitle from '../../hooks/useTitle'
 
 const Welcome = () => {
 
-    // const { username, isManager, isAdmin } = useAuth()
-    const { username, isUser, isAdmin } = useAuth()
+    const { username, isAdmin } = useAuth()
 
     useTitle(`nullpoint: ${username}`)
 

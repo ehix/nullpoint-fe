@@ -26,14 +26,16 @@ function App() {
         {/* Public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
+        {/* <Route path="view">
+          <Route path=":id" element={<ViewNote />} />
+        </Route> */}
         <Route path="*" element={<NotFound />} />
-
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />}>
               <Route path="dash" element={<DashLayout />}>
-
+                {/* Welcome is the index for /dash */}
                 <Route index element={<Welcome />} />
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>

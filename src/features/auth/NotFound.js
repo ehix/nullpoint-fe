@@ -7,37 +7,37 @@ export const NotFound = () => {
     return (
         <section className="dark-theme">
             <main className="not-found__main">
-                <h1 class="not-found__title line-up">Page nøt found</h1>
+                <h1 className="not-found__title line-up">Page nøt found</h1>
             </main>
-            <div class="snowflakes" aria-hidden="true">
-                <div class="snowflake">
+            <div className="snowflakes" aria-hidden="true">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
-                <div class="snowflake">
+                <div className="snowflake">
                     �
                 </div>
             </div>
