@@ -4,10 +4,11 @@ https://github.com/gitdagray/mern_stack_course/tree/main
 Refactor:
 1. Create blog site
    1. https://www.youtube.com/watch?v=-foo92lFIto
-2. ~~Change roles to: Employee -> X, Manager -> User, Admin -> Admin~~
-   - Workaround, Ignore Employees for now, and use the key above to finish nav logic?
-3. Change username to email, or require that somehow
-4. Let users edit their own info
+   2. https://www.youtube.com/watch?v=gv3FFnOdCIo&list=PL4cUxeGkcC9hAJ-ARcYq_z6lDZV7kT1xD&index=6&t=12s
+   3. https://www.youtube.com/watch?v=NqzdVN2tyvQ
+   4. https://www.youtube.com/watch?v=xKs2IZZya7c
+2. Change username to email, or require that somehow
+3. Let users edit their own info
 
 QoL:
 1. Handle `Failed to load resource: net::ERR_CONNECTION_REFUSED`
@@ -24,3 +25,6 @@ CSS:
      - Stylus Supremacy
 2. Change the spinner, start with the colour, check colour PulseLoader
 
+
+Email:
+1. https://dev.to/scofieldidehen/advanced-email-functionality-with-nodejs-reactjs-nodemailer-and-oauth2-in-2023-134o
