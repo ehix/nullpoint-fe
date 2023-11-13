@@ -31,7 +31,7 @@
   --CELL-BGCOLOR: var(--INPUT-BGCOLOR);
   --CELL-BORDER: var(--INPUT-BORDER);
   --TABLE-COLOR: rgb(0, 0, 0);
-  --INPUT-INVALID: rgb(255, 0, 0);
+  --INPUT-INVALID: var(--INDIAN-RED);
   --ALABASTER: rgb(236, 235, 227);
   --ALABASTER-OP5: rgba(236, 235, 227, 0.5);
   --ALABASTER-SHADOW-OP5: rgba(186, 181, 161, 0.5);
@@ -65,10 +65,15 @@
   white-space: nowrap;
   font-size: 0.95em;
   color: var(--DIM-GREY);
-  box-shadow: 0.2em 0.2em 0.1em 0 var(--SHADOW-DK-OP25);
-  background-color: var(--BONE);
+  box-shadow: 0.1em 0.1em 0.1em 0 var(--SHADOW-DK-OP25);
+  background-color: var(--BUFF);
+  /* border: 2px solid var(--DIM-GREY-OP2); */
+  border-radius: 10px;
   padding: 0.3em;
   position: absolute;
+  /* top: 50%; Center vertically */
+  /* left: 50%; Center horizontally */
+  /* transform: translate(-50%, -50%); */
   animation-name: slide-in;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -348,6 +353,13 @@ a:focus-visible {
   box-shadow: 0.05em 0.05em 0.05em 0 var(--BONE-SHADOW-OP7);
 }
 
+.login .form__input,
+.login .login__button {
+  border: none;
+  margin-top: 1em;
+  width: 100%;
+}
+
 .login form {
   display: flex;
   justify-content: center;
@@ -402,8 +414,50 @@ a:focus-visible {
   /* text-shadow: #00000033 2px 2px 1px; */
 }
 
+.welcome__container {
+  padding: 1rem;
+  background-color: var(--ALABASTER-OP5);
+  border-radius: 20px;
+}
+
+.welcome h1 {}
+
 .welcome a::before {
+  color: var(--DIM-GREY);
+  font-weight: bold;
   content: "➜ "
+}
+
+.welcome a {
+  color: var(--DIM-GREY-OP7);
+  letter-spacing: normal;
+}
+
+.edit-note {
+  padding: 2rem;
+  font-size: 0.75em;
+  background-color: var(--ALABASTER-OP5);
+  /* box-shadow: 0.2em 0.2em 0.2em 0 var(--SHADOW-DK-OP75); */
+  /* border-radius: 5px 5px 0 0; */
+  box-shadow: 0.1em 0.1em 0.1em 0 var(--ALABASTER-SHADOW-OP5);
+  outline: none;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.edit-note .form__input {
+  outline: none;
+  padding: 0.5rem;
+  color: var(--DIM-GREY-OP7);
+  background-color: var(--ALABASTER);
+  border: 1px solid var(--INPUT-BORDER);
+  box-shadow: 0.05em 0.05em 0.05em 0 var(--BONE-SHADOW-OP7);
+}
+
+.edit-note .form__label {
+  font-size: inherit;
+  font-weight: bold;
+  color: var(--DIM-GREY-OP7);
 }
 
 /* DASH HEADER, CONTAINER & FOOTER */
@@ -676,13 +730,6 @@ th {
   align-items: center;
 }
 
-.form__input,
-.login__button {
-  border: none;
-  margin-top: 1em;
-  width: 100%;
-}
-
 .form__input--text {
   min-height: 150px;
 }
@@ -710,6 +757,10 @@ th {
 .form__select {
   width: fit-content;
   padding: 0.25em;
+  color: inherit;
+  background-color: var(--ALABASTER);
+  border: 1px solid var(--INPUT-BORDER);
+  outline: none;
 }
 
 .form__action-buttons {
@@ -721,10 +772,14 @@ th {
   right: 0.5em;
 }
 
-.form__row {
-  display: flex;
-  flex-flow: row nowrap;
-  /* gap: 2em; */
+.form__action-buttons .icon-button {
+  color: var(--DIM-GREY-OP7);
+}
+
+.form__action-buttons .icon-button:hover,
+.form__action-buttons .icon-button:focus-visible {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
 }
 
 .form__divider {
@@ -733,6 +788,14 @@ th {
   gap: 0.5em;
 }
 
+.create-update {
+  justify-content: space-between;
+  padding: 0.5rem;
+  color: var(--DIM-GREY-OP7);
+  background-color: var(--ALABASTER-OP5);
+  border: 1px solid var(--INPUT-BORDER);
+  box-shadow: 0.05em 0.05em 0.05em 0 var(--BONE-SHADOW-OP7);
+}
 
 /* CONTACT FORM */
 
@@ -773,9 +836,11 @@ th {
 }
 
 .form__row {
-  gap: 1em;
+  display: flex;
   flex-direction: row;
   flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 1em;
 }
 
 .form__col {

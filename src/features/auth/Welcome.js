@@ -8,24 +8,17 @@ const Welcome = () => {
 
     useTitle(`nullpoint: ${username}`)
 
-    const date = new Date()
-    const today = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'long' }).format(date)
-
     const content = (
         <section className="welcome">
+            <div className="welcome__container">
 
-            <p>{today}</p>
+                <h1>Welcome, {username}!</h1>
+                <p><Link to="/dash/notes">View notes</Link></p>
+                <p><Link to="/dash/notes/new">Add new note</Link></p>
 
-            <h1>Welcome, {username}!</h1>
-
-            <p><Link to="/dash/notes">View Notes</Link></p>
-
-            <p><Link to="/dash/notes/new">Add New Note</Link></p>
-
-            {(isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
-
-            {(isAdmin) && <p><Link to="/dash/users/new">Add New User</Link></p>}
-
+                {(isAdmin) && <p><Link to="/dash/users">View user settings</Link></p>}
+                {(isAdmin) && <p><Link to="/dash/users/new">Add new user</Link></p>}
+            </div>
         </section>
     )
 
