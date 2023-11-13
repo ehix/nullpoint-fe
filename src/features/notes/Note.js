@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-import { useGetNotesQuery } from './notesApiSlice'
-import { memo } from 'react'
+import { useGetNotesQuery, useDeleteNoteMutation } from './notesApiSlice'
+import { memo, } from 'react'
 
 const Note = ({ noteId }) => {
 
@@ -11,15 +11,38 @@ const Note = ({ noteId }) => {
             note: data?.entities[noteId]
         }),
     })
-    
+
     const navigate = useNavigate()
 
-    if (note) {
-        const created = new Date(note.createdAt).toLocaleString('en-GB', { day: 'numeric', month: 'long' })
+    const [deleteNote, {
+        isSuccess: isDelSuccess,
+        isError: isDelError,
+        error: delerror
+    }] = useDeleteNoteMutation()
 
-        const updated = new Date(note.updatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'long' })
+    if (note) {
+        const created = new Date(note.createdAt).toLocaleString('en-GB', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).replace(',', ' -');
+
+        const updated = new Date(note.updatedAt).toLocaleString('en-GB', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).replace(',', ' -');
 
         const handleEdit = () => navigate(`/dash/notes/${noteId}`)
+        const handleDelete = async () => {
+            await deleteNote({ id: note.id })
+        }
 
         return (
             <tr className="table__row">
@@ -39,6 +62,12 @@ const Note = ({ noteId }) => {
                         onClick={handleEdit}
                     >
                         <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
+                    <button
+                        className="icon-button table__button"
+                        onClick={handleDelete}
+                    >
+                        <FontAwesomeIcon icon={faTrashCan} />
                     </button>
                 </td>
             </tr>

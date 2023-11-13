@@ -19,7 +19,7 @@ const NotesList = () => {
 
     // <!> Removed prefetch logic for now
     // } = useGetNotesQuery('notesList', {
-    //     pollingInterval: 60000,
+    //     pollingInterval: 600000,
     //     refetchOnFocus: true,
     //     refetchOnMountOrArgChange: true
     // })

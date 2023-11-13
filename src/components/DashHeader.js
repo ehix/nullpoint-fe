@@ -7,7 +7,6 @@ import {
     faUserGear,
     faUserPlus,
     faRightFromBracket,
-    faCaretDown
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
@@ -15,6 +14,7 @@ import useAuth from '../hooks/useAuth'
 import useScrollDirection from '../hooks/useScrollDirection'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { HashLink as Link } from 'react-router-hash-link';
+import Dropdown from './Dropdown'
 
 // const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
@@ -76,6 +76,7 @@ const DashHeader = () => {
 
     let contactButton = null
     let moreButton = null
+    let dropdownContent = null
     if (isOnLanding()) {
         contactButton = (
             <button
@@ -86,14 +87,7 @@ const DashHeader = () => {
         )
 
         moreButton = (
-            <button
-                className="text-button drop-down-button"
-                title="More"
-                onClick={() => navigate('/more')}
-            //   style={{ minWidth: '80px' }}
-            >
-                more&nbsp;<FontAwesomeIcon icon={faCaretDown} />
-            </button>
+            <Dropdown />
         )
     }
 
@@ -106,6 +100,7 @@ const DashHeader = () => {
                 {titleButton}
                 {contactButton}
                 {moreButton}
+                {dropdownContent}
             </>
         )
     }

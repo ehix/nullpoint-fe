@@ -17,6 +17,7 @@ const NewNoteForm = ({ users }) => {
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
+    const [completed, setCompleted] = useState(false)
 
     const { username, isAdmin } = useAuth()
     const user = users.find(u => u.username === username);
@@ -27,20 +28,23 @@ const NewNoteForm = ({ users }) => {
             setTitle('')
             setText('')
             setUserId('')
+            setCompleted('')
             navigate('/dash/notes')
         }
     }, [isSuccess, navigate])
 
+    
     const onTitleChanged = e => setTitle(e.target.value)
     const onTextChanged = e => setText(e.target.value)
     const onUserIdChanged = e => setUserId(e.target.value)
-
+    const onCompletedChanged = e => setCompleted(e.target.checked)
+    
     const canSave = [title, text, userId].every(Boolean) && !isLoading
 
     const onSaveNoteClicked = async (e) => {
         e.preventDefault()
         if (canSave) {
-            await addNewNote({ user: userId, title, text })
+            await addNewNote({ user: userId, title, text, completed })
         }
     }
 
@@ -56,6 +60,7 @@ const NewNoteForm = ({ users }) => {
     const errClass = isError ? "errmsg" : "offscreen"
     const validTitleClass = !title ? "form__input--incomplete" : ''
     const validTextClass = !text ? "form__input--incomplete" : ''
+
 
     let authorSelect
     if (isAdmin) {
@@ -116,6 +121,17 @@ const NewNoteForm = ({ users }) => {
                     onChange={onTextChanged}
                 />
                 {authorSelect}
+                <label className="form__label form__checkbox-container" htmlFor="note-completed">
+                    Publish:
+                    <input
+                        className="form__checkbox"
+                        id="note-completed"
+                        name="completed"
+                        type="checkbox"
+                        checked={completed}
+                        onChange={onCompletedChanged}
+                    />
+                </label>
             </form>
         </>
     )
