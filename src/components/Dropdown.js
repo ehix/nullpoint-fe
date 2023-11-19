@@ -25,7 +25,7 @@ const Dropdown = () => {
                 <ul className="dropdown-content">
                     <a className="text-button" href="/users">users</a>
                     <a className="text-button" href="/articles">articles</a>
-                    <a className="text-button" href="/games">games</a>
+                    <a className="text-button" href="https://replit.com/@3h1x0/terminal-maze">games</a>
                     <a className="text-button" href="/about">about</a>
                 </ul>
             ) : null}
